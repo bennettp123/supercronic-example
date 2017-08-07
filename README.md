@@ -17,7 +17,7 @@ spin up.
 # Sample usage
 
 ```
-docker run --rm -it bennettp123/supercronic-example
+$ docker run --rm -it bennettp123/supercronic-example
 Unable to find image 'bennettp123/supercronic-example:alpine' locally
 alpine: Pulling from bennettp123/supercronic-example
 88286f41530e: Already exists 
