@@ -7,8 +7,11 @@ ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.
 
 ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
 
+# install dependencies
 RUN apt-get update \
- && apt-get install -y dumb-init \
+ && apt-get install -y \
+        curl \
+        dumb-init \
 
 # install supercronic
 # (from https://github.com/aptible/supercronic/releases)
@@ -18,6 +21,9 @@ RUN apt-get update \
  && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
  && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic \
 
+# clean up dependencies
+ $$ apt-get purge -y \
+        curl \
  && rm -rf /var/lib/apt/lists/*
 
 ADD crontab.sample /etc/crontab
