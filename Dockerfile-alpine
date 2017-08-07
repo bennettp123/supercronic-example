@@ -11,7 +11,7 @@ ENTRYPOINT [ "/sbin/tini", "--" ]
 RUN apk add --no-cache \
         ca-certificates \
         curl \
-        tini
+        tini \
 
 # install supercronic
 # (from https://github.com/aptible/supercronic/releases)
