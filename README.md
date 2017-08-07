@@ -5,8 +5,7 @@ for use within containers.
 
 This example project implements a scheduled task using supercronic.
 
-Details and example usage are in [Dockerfile](Dockerfile) and
-[docker-compose.yml](docker-compose.yml).
+Details and example usage are in [Dockerfile](Dockerfile).
 
 # Evaluation notes
 
