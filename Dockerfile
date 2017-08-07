@@ -25,7 +25,7 @@ RUN apk add --no-cache \
 # clean up dependencies
  && apk del --purge \
         ca-certificates \
-        curl 
+        curl \
  && rm -rf /var/cache/apk/
 
 # example crontab
