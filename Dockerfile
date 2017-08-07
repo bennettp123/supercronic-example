@@ -22,7 +22,7 @@ RUN apt-get update \
  && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic \
 
 # clean up dependencies
- $$ apt-get purge -y \
+ $$ apt-get purge \
         curl \
  && rm -rf /var/lib/apt/lists/*
 
