@@ -1,18 +1,14 @@
-FROM alpine:3.6
+FROM debian:9.1
 
 # from https://github.com/aptible/supercronic/releases
 ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.2/supercronic-linux-amd64 \
     SUPERCRONIC=supercronic-linux-amd64 \
     SUPERCRONIC_SHA1SUM=cdfde14f50a171cbfc35a3a10429e2ab0709afe0
 
-# small init replacement
-ENTRYPOINT [ "/sbin/tini", "--" ]
+ENTRYPOINT [ "/usr/bin/dumb-init", "--" ]
 
-
-RUN apk add --no-cache \
-        ca-certificates \
-        curl \
-        tini
+RUN apt-get update \
+ && apt-get install -y dumb-init \
 
 # install supercronic
 # (from https://github.com/aptible/supercronic/releases)
@@ -22,15 +18,9 @@ RUN apk add --no-cache \
  && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
  && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic \
 
-# clean up dependencies
- && apk del --purge \
-        ca-certificates \
-        curl \
- && rm -rf /var/cache/apk/
+ && rm -rf /var/lib/apt/lists/*
 
-# example crontab
 ADD crontab.sample /etc/crontab
 
-# default command: run crontab
 CMD [ "/usr/local/bin/supercronic", "/etc/crontab" ]
 

@@ -5,7 +5,6 @@ ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.
     SUPERCRONIC=supercronic-linux-amd64 \
     SUPERCRONIC_SHA1SUM=cdfde14f50a171cbfc35a3a10429e2ab0709afe0
 
-# small init replacement
 ENTRYPOINT [ "/sbin/tini", "--" ]
 
 # install dependencies
@@ -28,9 +27,7 @@ RUN apk add --no-cache \
         curl \
  && rm -rf /var/cache/apk/
 
-# example crontab
 ADD crontab.sample /etc/crontab
 
-# default command: run crontab
 CMD [ "/usr/local/bin/supercronic", "/etc/crontab" ]
 
