@@ -22,8 +22,9 @@ RUN apt-get update \
  && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic \
 
 # clean up dependencies
- $$ apt-get purge \
+ && apt-get purge -y \
         curl \
+ && apt-get autoremove -y \
  && rm -rf /var/lib/apt/lists/*
 
 ADD crontab.sample /etc/crontab
