@@ -22,3 +22,10 @@ docker run --rm -it bennettp123/supercronic-example
 
 ```
 
+# Customizing
+
+```
+docker run --rm -it -v ./another-sample-crontab:/etc/crontab:ro bennettp123/supercronic-example
+
+```
+
