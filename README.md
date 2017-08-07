@@ -5,7 +5,8 @@ for use within containers.
 
 This example project implements a scheduled task using supercronic.
 
-Details and example usage are in [Dockerfile](Dockerfile).
+Details and example usage are in [Dockerfile](Dockerfile)
+and [Dockerfile-alpine](Dockerfile-alpine).
 
 # Evaluation notes
 
