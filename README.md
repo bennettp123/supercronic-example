@@ -17,7 +17,7 @@ spin up.
 # Sample usage
 
 ```
-docker run --rm -it bennettp123/supercronic-test
+docker run --rm -it bennettp123/supercronic-example
 
 
 ```
